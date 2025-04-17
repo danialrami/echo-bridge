@@ -128,4 +128,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Electrosmith for the Daisy platform
 - Cleveland Music Co. for the Hothouse pedal format
-- Original implementation by danialrami
