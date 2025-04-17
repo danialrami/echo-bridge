@@ -13,6 +13,7 @@ A stereo-compatible convolution reverb effect that recreates the unique acoustic
 - **Freeze Function**: Capture and sustain the reverb tail indefinitely
 - **Enhanced Error Handling**: Robust USB/file operations with informative error messages
 - **OLED Parameter Display**: Real-time visualization of all control parameters
+- **Memory-Efficient FFT**: Uses ShyFFT for optimized convolution on embedded hardware
 
 ### Controls
 
@@ -29,6 +30,13 @@ A stereo-compatible convolution reverb effect that recreates the unique acoustic
 | SWITCH 3 | Stereo Width | **UP** - Narrow stereo (0.5)<br/>**MIDDLE** - Normal stereo (1.0)<br/>**DOWN** - Wide stereo (1.5) |
 | FOOTSWITCH 1 | Freeze/Hold | Momentary freeze of the reverb tail |
 | FOOTSWITCH 2 | Bypass | The bypassed signal is buffered |
+
+## Features
+
+| FEATURE | DESCRIPTION |
+|-|-|
+| Double Press FOOTSWITCH_1 | Cycles through IR modes |
+| Long Press FOOTSWITCH_1 | Enters bootloader mode (after LED flashing sequence) |
 
 ## LED Indicators
 
@@ -79,10 +87,13 @@ The pedal provides feedback on the OLED display when IR loading operations fail,
 - Processing uses FFT-based convolution with separate processors for left and right channels.
 - Mid-side processing is used for stereo width control.
 - Automatic stereo detection analyzes channel differences to determine if the input is mono or stereo.
-- Memory-efficient implementation with 1024-point FFT and overlap-add processing.
+- Memory-efficient implementation using ShyFFT, an optimized FFT library specifically designed for embedded audio applications.
+- 1024-point FFT with overlap-add processing for efficient real-time convolution.
 - Full 48kHz fidelity with support for IRs up to 3 seconds in length.
+- Enhanced stereo capabilities including true stereo IR pairs or mono-to-stereo expansion.
 - Display abstraction layer for improved code maintainability.
 - Enhanced error handling for robust operation.
+- Footswitch callback system for detecting normal, double, and long presses.
 
 ## Sound Design Tips
 
@@ -92,6 +103,7 @@ The pedal provides feedback on the OLED display when IR loading operations fail,
 - For cinematic sound design, try using a short pre-delay (20-30ms) and a wide stereo setting.
 - Use the low and high cut filters to shape the spectral characteristics of the reverb tail.
 - For more experimental sounds, try extreme settings like very short IR length combined with freeze functionality.
+- Double-press FOOTSWITCH_1 to quickly cycle through IR modes during performance.
 - Hold the left footswitch (FOOTSWITCH_1) for 2 seconds to enter bootloader mode for firmware updates.
 
 ## Building From Source
@@ -101,6 +113,9 @@ This project requires the Daisy ecosystem libraries:
 - DaisySP: DSP library with various audio processing modules
 
 It also depends on the Hothouse form factor headers, which handle the hardware interface for the specific pedal layout.
+
+The project also uses:
+- ShyFFT: An efficient FFT implementation designed for embedded audio applications by Emilie Gillet.
 
 Build with the standard Daisy toolchain:
 ```

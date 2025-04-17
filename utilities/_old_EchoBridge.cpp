@@ -1,5 +1,5 @@
 // Echo Bridge Reverb for Hothouse DIY DSP Platform
-// Copyright (C) 2025 Your Name <your.email@example.com>
+// Copyright (C) 2025 Daniel Ramirez daniel@lufs.audio
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
