@@ -1,6 +1,7 @@
 #pragma once
 
-#include "daisy.h"
+#include "daisy_seed.h"
+#include "dev/oled_ssd130x.h"
 
 using namespace daisy;
 
@@ -8,7 +9,7 @@ using namespace daisy;
 class DisplayManager 
 {
 public:
-    DisplayManager(OledDisplay& disp) : display_(disp) {}
+    DisplayManager(OledDisplay<SSD130x4WireSpi128x64Driver>& disp) : display_(disp) {}
     
     void Init() 
     {
@@ -36,11 +37,21 @@ public:
         display_.Update();
     }
     
-    void ShowIRLoaded(bool isStereo, int irMode) 
+    void ShowIRLoaded(bool loaded) 
     {
         display_.SetCursor(0, 24);
-        snprintf(buffer_, sizeof(buffer_), "Loaded: %s IR %d", isStereo ? "Stereo" : "Mono", irMode + 1);
+        snprintf(buffer_, sizeof(buffer_), "IR %s", loaded ? "Loaded" : "Failed");
         display_.WriteString(buffer_, Font_7x10, true);
+        display_.Update();
+    }
+    
+    void ShowBypass(bool bypassed) 
+    {
+        display_.Fill(false);
+        display_.SetCursor(0, 0);
+        display_.WriteString("Echo Bridge", Font_7x10, true);
+        display_.SetCursor(0, 12);
+        display_.WriteString(bypassed ? "BYPASSED" : "ACTIVE", Font_7x10, true);
         display_.Update();
     }
     
@@ -76,6 +87,6 @@ public:
     }
     
 private:
-    OledDisplay& display_;
+    OledDisplay<SSD130x4WireSpi128x64Driver>& display_;
     char buffer_[64];
 };
