@@ -111,18 +111,6 @@ The following issues were fixed in this implementation:
    - Added missing unicode.c file with required functions
    - Fixed character conversion functions for file system access
 
-## Memory Usage
-
-The implementation uses:
-- 89.83% of FLASH (117736 bytes of 128 KB)
-- 46.28% of SRAM (242636 bytes of 512 KB)
-
-This is within the constraints of the Daisy Seed board.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgments
 
 - Electrosmith for the Daisy platform
