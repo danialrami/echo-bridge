@@ -20,7 +20,6 @@ This is a convolution reverb implementation for the Daisy Seed board, designed t
 
 - Daisy Seed board
 - Cleveland Music Co. Hothouse pedal enclosure
-- OLED display (SSD1309 or compatible)
 - USB port for loading impulse response files
 - Audio input/output jacks
 - Potentiometers for parameter control
