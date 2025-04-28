@@ -1,4 +1,4 @@
-build/hothouse.o: hothouse.cpp \
+build/EchoBridgeWithUSB.o: EchoBridgeWithUSB.cpp \
  /home/ubuntu/DaisyExamples/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  /home/ubuntu/DaisyExamples/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  /home/ubuntu/DaisyExamples/libDaisy/Drivers/CMSIS/Include/core_cm7.h \
@@ -93,6 +93,61 @@ build/hothouse.o: hothouse.cpp \
  /home/ubuntu/DaisyExamples/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  /home/ubuntu/DaisyExamples/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  /home/ubuntu/DaisyExamples/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/daisysp.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Control/adenv.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Control/adsr.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Control/phasor.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Drums/analogbassdrum.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/oscillator.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/dsp.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Filters/svf.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Drums/analogsnaredrum.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Drums/hihat.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Drums/synthbassdrum.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Drums/synthsnaredrum.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Dynamics/crossfade.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Dynamics/limiter.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/autowah.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/chorus.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/delayline.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/decimator.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/flanger.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/overdrive.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/pitchshifter.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/phaser.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/sampleratereducer.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/tremolo.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Effects/wavefolder.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/dcblock.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Filters/onepole.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Filters/fir.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Filters/soap.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Noise/clockednoise.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Noise/dust.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Noise/fractal_noise.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Noise/grainlet.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Noise/particle.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Noise/whitenoise.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/drip.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/KarplusString.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Filters/onepole.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/modalvoice.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/resonator.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/stringvoice.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Sampling/granularplayer.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/fm2.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/formantosc.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/harmonic_osc.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/oscillatorbank.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/variablesawosc.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/variableshapeosc.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/vosim.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/zoscillator.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/looper.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/maytrig.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/metro.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/samplehold.h \
+ /home/ubuntu/DaisyExamples/DaisySP/Source/Utility/smooth_random.h \
  hothouse.h /home/ubuntu/DaisyExamples/libDaisy/src/daisy_seed.h \
  /home/ubuntu/DaisyExamples/libDaisy/src/daisy.h \
  /home/ubuntu/DaisyExamples/libDaisy/src/daisy_core.h \
@@ -178,7 +233,9 @@ build/hothouse.o: hothouse.cpp \
  /home/ubuntu/DaisyExamples/libDaisy/src/util/VoctCalibration.h \
  /home/ubuntu/DaisyExamples/libDaisy/src/util/WaveTableLoader.h \
  /home/ubuntu/DaisyExamples/libDaisy/src/sys/fatfs.h \
- /home/ubuntu/DaisyExamples/libDaisy/src/util/WavWriter.h
+ /home/ubuntu/DaisyExamples/libDaisy/src/util/WavWriter.h \
+ /home/ubuntu/DaisyExamples/libDaisy/src/dev/oled_ssd130x.h IRLoader.h \
+ /home/ubuntu/DaisyExamples/libDaisy/src/hid/usb_host.h shy_fft.h
 /home/ubuntu/DaisyExamples/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 /home/ubuntu/DaisyExamples/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h:
 /home/ubuntu/DaisyExamples/libDaisy/Drivers/CMSIS/Include/core_cm7.h:
@@ -273,6 +330,61 @@ build/hothouse.o: hothouse.cpp \
 /home/ubuntu/DaisyExamples/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 /home/ubuntu/DaisyExamples/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
 /home/ubuntu/DaisyExamples/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/daisysp.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Control/adenv.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Control/adsr.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Control/phasor.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Drums/analogbassdrum.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/oscillator.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/dsp.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Filters/svf.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Drums/analogsnaredrum.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Drums/hihat.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Drums/synthbassdrum.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Drums/synthsnaredrum.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Dynamics/crossfade.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Dynamics/limiter.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/autowah.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/chorus.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/delayline.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/decimator.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/flanger.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/overdrive.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/pitchshifter.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/phaser.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/sampleratereducer.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/tremolo.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Effects/wavefolder.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/dcblock.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Filters/onepole.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Filters/fir.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Filters/soap.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Noise/clockednoise.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Noise/dust.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Noise/fractal_noise.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Noise/grainlet.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Noise/particle.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Noise/whitenoise.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/drip.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/KarplusString.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Filters/onepole.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/modalvoice.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/resonator.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/PhysicalModeling/stringvoice.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Sampling/granularplayer.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/fm2.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/formantosc.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/harmonic_osc.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/oscillatorbank.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/variablesawosc.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/variableshapeosc.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/vosim.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Synthesis/zoscillator.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/looper.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/maytrig.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/metro.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/samplehold.h:
+/home/ubuntu/DaisyExamples/DaisySP/Source/Utility/smooth_random.h:
 hothouse.h:
 /home/ubuntu/DaisyExamples/libDaisy/src/daisy_seed.h:
 /home/ubuntu/DaisyExamples/libDaisy/src/daisy.h:
@@ -360,3 +472,7 @@ hothouse.h:
 /home/ubuntu/DaisyExamples/libDaisy/src/util/WaveTableLoader.h:
 /home/ubuntu/DaisyExamples/libDaisy/src/sys/fatfs.h:
 /home/ubuntu/DaisyExamples/libDaisy/src/util/WavWriter.h:
+/home/ubuntu/DaisyExamples/libDaisy/src/dev/oled_ssd130x.h:
+IRLoader.h:
+/home/ubuntu/DaisyExamples/libDaisy/src/hid/usb_host.h:
+shy_fft.h:

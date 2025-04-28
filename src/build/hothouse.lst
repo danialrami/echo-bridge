@@ -1,0 +1,59 @@
+ARM GAS  /tmp/cc3q9rdr.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"hothouse.cpp"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              	.Letext0:
+  17              		.file 1 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+  18              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+  19              		.file 3 "/usr/include/newlib/c++/10.3.1/cmath"
+  20              		.file 4 "/usr/include/newlib/c++/10.3.1/bits/std_abs.h"
+  21              		.file 5 "/usr/include/newlib/c++/10.3.1/cstdlib"
+  22              		.file 6 "/usr/include/newlib/c++/10.3.1/cstdint"
+  23              		.file 7 "/usr/include/newlib/c++/10.3.1/type_traits"
+  24              		.file 8 "/usr/include/newlib/c++/10.3.1/debug/debug.h"
+  25              		.file 9 "/usr/include/newlib/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
+  26              		.file 10 "/usr/include/newlib/c++/10.3.1/bits/algorithmfwd.h"
+  27              		.file 11 "/usr/include/newlib/c++/10.3.1/bits/stl_pair.h"
+  28              		.file 12 "/usr/include/newlib/c++/10.3.1/bits/exception_ptr.h"
+  29              		.file 13 "/usr/include/newlib/c++/10.3.1/cstdarg"
+  30              		.file 14 "/usr/include/newlib/c++/10.3.1/cstdio"
+  31              		.file 15 "/usr/include/newlib/c++/10.3.1/cstring"
+  32              		.file 16 "/usr/include/newlib/c++/10.3.1/bits/predefined_ops.h"
+  33              		.file 17 "/usr/include/newlib/sys/_types.h"
+  34              		.file 18 "/usr/include/newlib/sys/reent.h"
+  35              		.file 19 "/usr/include/newlib/sys/lock.h"
+  36              		.file 20 "/usr/include/newlib/math.h"
+  37              		.file 21 "/usr/include/newlib/stdlib.h"
+  38              		.file 22 "/usr/include/newlib/c++/10.3.1/math.h"
+  39              		.file 23 "/usr/include/newlib/c++/10.3.1/stdlib.h"
+  40              		.file 24 "/home/ubuntu/DaisyExamples/libDaisy/src/daisy_core.h"
+  41              		.file 25 "/home/ubuntu/DaisyExamples/libDaisy/src/util/wav_format.h"
+  42              		.file 26 "/home/ubuntu/DaisyExamples/libDaisy/src/dev/max11300.h"
+  43              		.file 27 "/home/ubuntu/DaisyExamples/libDaisy/src/daisy_seed.h"
+  44              		.file 28 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+  45              		.file 29 "/usr/include/newlib/stdio.h"
+  46              		.file 30 "/usr/include/newlib/string.h"
+  47              		.file 31 "hothouse.h"
+  48              		.file 32 "<built-in>"
+  49              		.file 33 "/home/ubuntu/DaisyExamples/libDaisy/src/dev/sr_595.h"
+ARM GAS  /tmp/cc3q9rdr.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hothouse.cpp
+
+NO UNDEFINED SYMBOLS

@@ -1,37 +1,84 @@
-# Echo Bridge - Convolution Reverb for Daisy Seed
+# Echo Bridge Convolution Reverb
 
-This is a convolution reverb implementation for the Daisy Seed board, designed to be used in a guitar pedal format with the Cleveland Music Co. Hothouse form factor.
+Echo Bridge is a high-quality convolution reverb effect for the Daisy Seed platform, designed to provide studio-quality reverb in a compact guitar pedal form factor.
 
 ## Features
 
-- Convolution reverb using FFT-based processing
-- USB support for loading impulse response files
-- OLED display for parameter visualization
-- Stereo input/output support
-- Adjustable parameters:
-  - Dry/wet mix
-  - Predelay
-  - IR length
-  - Low cut filter
-  - High cut filter
-  - Stereo width
+- **Partitioned Convolution Algorithm**: Low-latency processing with high audio quality
+  - Early reflections processed with small FFT (64 points) for minimal latency
+  - Late reverb tail processed with larger FFT (1024 points) for computational efficiency
+  
+- **USB Host Support**: Load custom impulse responses from USB drive
+  - Supports mono and stereo WAV files
+  - Automatically normalizes impulse responses
+  
+- **Comprehensive Controls**:
+  - Dry/Wet mix
+  - Predelay (0-500ms)
+  - IR length control
+  - Low/High cut filters
+  - Stereo width control
+  
+- **Visual Feedback**:
+  - LED indicators for bypass and freeze status
+  
+- **Memory Optimized**:
+  - Uses external SDRAM for large buffers
+  - Efficient memory usage for long impulse responses
 
 ## Hardware Requirements
 
-- Daisy Seed board
-- Cleveland Music Co. Hothouse pedal enclosure
-- USB port for loading impulse response files
-- Audio input/output jacks
-- Potentiometers for parameter control
-- Footswitches for bypass and other functions
+- Daisy Seed board (65MB version recommended)
+- Cleveland Music Co. Hothouse pedal enclosure or compatible hardware
+- USB host port for loading impulse responses
 
-## Installation
+## Usage
 
-1. Connect your Daisy Seed board to your computer via USB
-2. Use the Daisy Web Programmer (https://electro-smith.github.io/Programmer/) or the Daisy Seed CLI tools to flash the `EchoBridge.bin` file to your board
-3. Alternatively, you can build the project from source using the provided Makefile
+### Basic Operation
+
+1. **Freeze Mode**: Press footswitch 1 to toggle freeze mode (only outputs reverb tail)
+2. **Bypass Mode**: Press footswitch 2 to toggle bypass mode
+3. **Load IR from USB**: Long press footswitch 1 to load impulse response from USB drive
+   - LED 1 will blink during loading and indicate success/failure
+4. **Reset Parameters**: Long press footswitch 2 to reset all parameters to default values
+
+### Knob Controls
+
+- **Knob 1**: Dry/Wet mix (0-100%)
+- **Knob 2**: Predelay (0-500ms)
+- **Knob 3**: IR length (0-100%)
+- **Knob 4**: Filter control
+  - First half (0-50%): Low cut frequency (20Hz-1000Hz)
+  - Second half (50-100%): High cut frequency (20kHz-1000Hz)
+- **Knob 5**: Stereo width (0-200%)
+- **Knob 6**: Reserved for future use
+
+### LED Indicators
+
+- **LED 1**: Freeze status (on when freeze is active)
+  - Temporarily blinks when loading IR files
+- **LED 2**: Bypass status (off when bypassed, on when active)
+
+### Loading Impulse Responses
+
+Place WAV files on a USB drive and connect it to the pedal:
+
+- For mono reverb: Save as `ir_mono.wav`
+- For stereo reverb: Save left and right channels as `ir_left.wav` and `ir_right.wav`
+
+Supported formats:
+- 16-bit, 24-bit, or 32-bit float WAV files
+- Mono or stereo files
+- Any sample rate (will be resampled as needed)
 
 ## Building from Source
+
+### Prerequisites
+
+- Daisy toolchain (arm-none-eabi-gcc)
+- libDaisy and DaisySP libraries
+
+### Build Instructions
 
 1. Clone the libDaisy and DaisySP repositories:
    ```
@@ -47,71 +94,33 @@ This is a convolution reverb implementation for the Daisy Seed board, designed t
    make
    ```
 
-3. Update the Makefile to point to your libDaisy and DaisySP directories if needed
-
-4. Build the project:
+3. Build Echo Bridge:
    ```
+   cd echo-bridge_v0.99/src
    make
    ```
 
-5. Flash the resulting `build/EchoBridge.bin` file to your Daisy Seed board
+4. Flash to Daisy Seed:
+   ```
+   make program-dfu
+   ```
 
-## Usage
+## Technical Details
 
-1. Power on the pedal
-2. Connect a USB drive with impulse response files (WAV format)
-3. Use the footswitches to control:
-   - Footswitch 1: Toggle bypass
-   - Footswitch 2: Toggle freeze mode
-   - Long press Footswitch 1: Reset parameters to default
-   - Long press Footswitch 2: Load IR files from USB
+Echo Bridge uses a partitioned convolution algorithm to achieve low latency while maintaining high audio quality. The impulse response is divided into two parts:
 
-4. Use the knobs to adjust parameters:
-   - Knob 1: Dry/wet mix
-   - Knob 2: Predelay (0-500ms)
-   - Knob 3: IR length factor
-   - Knob 4: Filter control (first half controls low cut, second half controls high cut)
+1. **Early reflections**: Processed with a small FFT size (64 samples) for minimal latency
+2. **Late reverb tail**: Processed with a larger FFT size (1024 samples) for computational efficiency
 
-## Impulse Response Files
+This approach provides the immediate response needed for musical performance while still allowing for rich, detailed reverb tails.
 
-The pedal looks for the following files on the USB drive:
-- `/ir_mono.wav` - Used for mono processing
-- `/ir_left.wav` and `/ir_right.wav` - Used for stereo processing when stereo input is detected
+Memory usage is optimized by storing large buffers in the external SDRAM, allowing for longer impulse responses without running out of internal memory. This implementation is specifically optimized for the 65MB version of the Daisy Seed which provides additional SDRAM.
 
-## Changes Made to Fix Implementation
+## License
 
-The following issues were fixed in this implementation:
-
-1. **ShyFFT API Usage**: 
-   - Fixed template instantiation with proper parameters
-   - Updated method calls from Forward() to Direct()
-   - Fixed Inverse() method parameter types
-
-2. **OLED Display Driver**: 
-   - Updated to use the correct SSD130x4WireSpi128x64Driver class
-   - Fixed constructor parameters and initialization
-
-3. **Pin Access Methods**: 
-   - Changed hw.GetPin() to hw.seed.GetPin() for proper pin access
-
-4. **SVF Filter API**: 
-   - Updated filter processing to use the correct High() and Low() methods
-   - Removed SetMode() calls which don't exist in the current API
-
-5. **Memory Optimization**: 
-   - Reduced FFT_SIZE from 1024 to 512
-   - Reduced MAX_IR_LENGTH to 4096
-   - Optimized buffer allocations to fit within memory constraints
-
-6. **USB Host API**: 
-   - Updated the IRLoader class to use the correct USBHostHandle API
-   - Fixed file system access methods
-
-7. **FatFs Integration**: 
-   - Added missing unicode.c file with required functions
-   - Fixed character conversion functions for file system access
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 
-- Electrosmith for the Daisy platform
-- Cleveland Music Co. for the Hothouse pedal format
+- Electrosmith for the Daisy platform and libraries
+- Cleveland Music Co. for the Hothouse pedal design
