@@ -116,10 +116,6 @@ This approach provides the immediate response needed for musical performance whi
 
 Memory usage is optimized by storing large buffers in the external SDRAM, allowing for longer impulse responses without running out of internal memory. This implementation is specifically optimized for the 65MB version of the Daisy Seed which provides additional SDRAM.
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgments
 
 - Electrosmith for the Daisy platform and libraries
