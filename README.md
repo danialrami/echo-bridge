@@ -1,5 +1,10 @@
 # Echo Bridge Convolution Reverb
 
+[![Build Firmware](https://github.com/danialrami/echo-bridge/actions/workflows/build.yml/badge.svg)](https://github.com/danialrami/echo-bridge/actions/workflows/build.yml)
+![Version](https://img.shields.io/badge/version-v0.9.9-blue)
+![License](https://img.shields.io/github/license/danialrami/echo-bridge)
+![Platform](https://img.shields.io/badge/platform-Daisy_Seed-2ea44f)
+
 Echo Bridge is a high-quality convolution reverb effect for the Daisy Seed platform, designed to provide studio-quality reverb in a compact guitar pedal form factor.
 
 ## Features
@@ -75,35 +80,37 @@ Supported formats:
 
 ### Prerequisites
 
-- Daisy toolchain (arm-none-eabi-gcc)
+- [Daisy toolchain](https://github.com/electro-smith/DaisyToolchain) (`arm-none-eabi-gcc`)
 - libDaisy and DaisySP libraries
 
-### Build Instructions
+### Quick Build
 
-1. Clone the libDaisy and DaisySP repositories:
-   ```
-   git clone https://github.com/electro-smith/libDaisy.git
-   git clone https://github.com/electro-smith/DaisySP.git
-   ```
+```bash
+# Clone dependencies
+git clone https://github.com/electro-smith/libDaisy.git
+git clone https://github.com/electro-smith/DaisySP.git
 
-2. Build the libraries:
-   ```
-   cd libDaisy
-   make
-   cd ../DaisySP
-   make
-   ```
+# Build libraries
+cd libDaisy && make && cd ..
+cd DaisySP && make && cd ..
 
-3. Build Echo Bridge:
-   ```
-   cd echo-bridge_v0.99/src
-   make
-   ```
+# Build firmware
+cd src
+make LIBDAISY_DIR=../libDaisy DAISYSP_DIR=../DaisySP
+```
 
-4. Flash to Daisy Seed:
-   ```
-   make program-dfu
-   ```
+### Flash to Daisy Seed
+
+```bash
+cd src
+make LIBDAISY_DIR=../libDaisy DAISYSP_DIR=../DaisySP program-dfu
+```
+
+Or use the pre-built binary:
+
+```bash
+dfu-util -a 0 -d 0x0483:0xdf11 -s 0x08000000:leave -D src/build/EchoBridge.bin
+```
 
 ## Technical Details
 
@@ -115,6 +122,12 @@ Echo Bridge uses a partitioned convolution algorithm to achieve low latency whil
 This approach provides the immediate response needed for musical performance while still allowing for rich, detailed reverb tails.
 
 Memory usage is optimized by storing large buffers in the external SDRAM, allowing for longer impulse responses without running out of internal memory. This implementation is specifically optimized for the 65MB version of the Daisy Seed which provides additional SDRAM.
+
+## Versioning
+
+This project follows [Semantic Versioning](https://semver.org/). See [CHANGELOG.md](./CHANGELOG.md) for the release history.
+
+Current version: [v0.9.9](./VERSION)
 
 ## Acknowledgments
 
