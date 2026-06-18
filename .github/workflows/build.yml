@@ -1,0 +1,86 @@
+name: Build Firmware
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'Makefile'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'Makefile'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: electrosmith/daisey-toolchain:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check GPL-3.0 License Header
+        run: |
+          MISSING=""
+          for f in src/*.cpp src/*.h src/*.c; do
+            if ! head -5 "$f" | grep -q "GNU General Public License"; then
+              MISSING="$MISSING $f"
+            fi
+          done
+          if [ -n "$MISSING" ]; then
+            echo "Missing GPL-3.0 header in:$MISSING"
+            exit 1
+          fi
+          echo "All source files have GPL-3.0 headers"
+
+      - name: Check VERSION file
+        run: |
+          if [ ! -f VERSION ]; then
+            echo "Missing VERSION file"
+            exit 1
+          fi
+          echo "Version: $(cat VERSION)"
+
+      - name: Check CHANGELOG
+        run: |
+          if [ ! -f CHANGELOG.md ]; then
+            echo "Missing CHANGELOG.md"
+            exit 1
+          fi
+          echo "CHANGELOG.md present"
+
+      - name: Clone libDaisy
+        run: |
+          git clone --depth 1 https://github.com/electro-smith/libDaisy.git /tmp/libDaisy
+          cd /tmp/libDaisy && make -j$(nproc)
+
+      - name: Clone DaisySP
+        run: |
+          git clone --depth 1 https://github.com/electro-smith/DaisySP.git /tmp/DaisySP
+          cd /tmp/DaisySP && make -j$(nproc)
+
+      - name: Build
+        run: |
+          cd src
+          make LIBDAISY_DIR=/tmp/libDaisy DAISYSP_DIR=/tmp/DaisySP
+
+      - name: Verify Output
+        run: |
+          if [ -f src/build/EchoBridge.bin ]; then
+            echo "Build successful: EchoBridge.bin ($(stat -c%s src/build/EchoBridge.bin) bytes)"
+          else
+            echo "Build failed: EchoBridge.bin not found"
+            exit 1
+          fi
+
+      - name: Upload Firmware Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: echo-bridge-firmware
+          path: src/build/EchoBridge.bin
